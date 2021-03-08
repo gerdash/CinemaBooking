@@ -9,6 +9,7 @@ namespace CinemaTest
             Console.WriteLine("Nananan!");
             Console.WriteLine("Whooooooo");
             Console.WriteLine("Whaaaaaaaa");
+            //this is a comment
         }
     }
 }
