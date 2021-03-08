@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31025.194
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinemaLogic", "CinemaLogic\CinemaLogic\CinemaLogic.csproj", "{61239EB6-5720-48EF-8C25-0CC1E5680B7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CinemaLogic", "CinemaLogic\CinemaLogic\CinemaLogic.csproj", "{61239EB6-5720-48EF-8C25-0CC1E5680B7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinemaTest", "ConsoleTest\CinemaTest\CinemaTest.csproj", "{3142EE5A-8A4B-4B64-A8A6-38B8D9A318D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CinemaTest", "ConsoleTest\CinemaTest\CinemaTest.csproj", "{3142EE5A-8A4B-4B64-A8A6-38B8D9A318D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HTML.Templates", "HTML template\HTML.Templates\HTML.Templates.csproj", "{7400B88E-8232-4577-B315-7972C8240515}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{3142EE5A-8A4B-4B64-A8A6-38B8D9A318D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3142EE5A-8A4B-4B64-A8A6-38B8D9A318D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3142EE5A-8A4B-4B64-A8A6-38B8D9A318D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7400B88E-8232-4577-B315-7972C8240515}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7400B88E-8232-4577-B315-7972C8240515}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7400B88E-8232-4577-B315-7972C8240515}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7400B88E-8232-4577-B315-7972C8240515}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
