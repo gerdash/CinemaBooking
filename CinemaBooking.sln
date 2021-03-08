@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31025.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinemaLogic", "CinemaLogic\CinemaLogic\CinemaLogic.csproj", "{61239EB6-5720-48EF-8C25-0CC1E5680B7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinemaTest", "ConsoleTest\CinemaTest\CinemaTest.csproj", "{3142EE5A-8A4B-4B64-A8A6-38B8D9A318D4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{61239EB6-5720-48EF-8C25-0CC1E5680B7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61239EB6-5720-48EF-8C25-0CC1E5680B7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61239EB6-5720-48EF-8C25-0CC1E5680B7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61239EB6-5720-48EF-8C25-0CC1E5680B7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3142EE5A-8A4B-4B64-A8A6-38B8D9A318D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3142EE5A-8A4B-4B64-A8A6-38B8D9A318D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3142EE5A-8A4B-4B64-A8A6-38B8D9A318D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3142EE5A-8A4B-4B64-A8A6-38B8D9A318D4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {567C6AD0-5ED2-4917-9B84-54902FFD058E}
+	EndGlobalSection
+EndGlobal
