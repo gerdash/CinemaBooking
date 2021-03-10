@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CinemaLogic.DB
 {
-    public partial class Films
+    public partial class UserFilms
     {
         public int Id { get; set; }
         public string Title { get; set; }
@@ -14,6 +14,6 @@ namespace CinemaLogic.DB
         public int CategoryId { get; set; }
         public string Cast { get; set; }
         public int DurationInMin { get; set; }
-        public int ScreeningId { get; set; }
+        public int? ScreeningId { get; set; }
     }
 }

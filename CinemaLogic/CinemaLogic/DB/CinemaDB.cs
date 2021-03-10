@@ -18,6 +18,7 @@ namespace CinemaLogic.DB
         public virtual DbSet<Categories> Categories { get; set; }
         public virtual DbSet<Films> Films { get; set; }
         public virtual DbSet<Screening> Screening { get; set; }
+        public virtual DbSet<UserFilms> UserFilms { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -55,6 +56,8 @@ namespace CinemaLogic.DB
 
                 entity.Property(e => e.ReleaseDate).HasColumnType("datetime");
 
+                entity.Property(e => e.ScreeningId).HasColumnName("Screening_id");
+
                 entity.Property(e => e.Synopsis)
                     .IsRequired()
                     .HasMaxLength(1000);
@@ -71,6 +74,35 @@ namespace CinemaLogic.DB
                 entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.StartTime).HasColumnType("datetime");
+            });
+
+            modelBuilder.Entity<UserFilms>(entity =>
+            {
+                entity.Property(e => e.Cast)
+                    .IsRequired()
+                    .HasMaxLength(150);
+
+                entity.Property(e => e.CategoryId).HasColumnName("Category_id");
+
+                entity.Property(e => e.Director)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Image)
+                    .IsRequired()
+                    .HasMaxLength(300);
+
+                entity.Property(e => e.ReleaseDate).HasColumnType("datetime");
+
+                entity.Property(e => e.ScreeningId).HasColumnName("Screening_id");
+
+                entity.Property(e => e.Synopsis)
+                    .IsRequired()
+                    .HasMaxLength(1000);
+
+                entity.Property(e => e.Title)
+                    .IsRequired()
+                    .HasMaxLength(50);
             });
 
             OnModelCreatingPartial(modelBuilder);
