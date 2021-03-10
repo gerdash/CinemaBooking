@@ -78,31 +78,7 @@ namespace CinemaLogic.DB
 
             modelBuilder.Entity<UserFilms>(entity =>
             {
-                entity.Property(e => e.Cast)
-                    .IsRequired()
-                    .HasMaxLength(150);
-
-                entity.Property(e => e.CategoryId).HasColumnName("Category_id");
-
-                entity.Property(e => e.Director)
-                    .IsRequired()
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.Image)
-                    .IsRequired()
-                    .HasMaxLength(300);
-
-                entity.Property(e => e.ReleaseDate).HasColumnType("datetime");
-
-                entity.Property(e => e.ScreeningId).HasColumnName("Screening_id");
-
-                entity.Property(e => e.Synopsis)
-                    .IsRequired()
-                    .HasMaxLength(1000);
-
-                entity.Property(e => e.Title)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.FilmId).HasColumnName("Film_id");
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -18,34 +18,59 @@ namespace CinemaLogic
         {
             using (var db = new CinemaDB())
             {
-                return db.UserFilms.OrderBy(f => f.Title).ToList();
+                return db.UserFilms.ToList();
             }
         }
 
         //book a film for a specific time
-        public Films ChooseAFilm()
+        public Films ChooseAFilm(string title)
         {
-            //book a film by title? (title is a link to click on)
-
             using (var db = new CinemaDB())
             {
-                
+                var film = db.Films.FirstOrDefault(f => f.Title.ToLower() == title.ToLower());
+                if (film != null)
+                {
+                    return film;
+                }
             }
-            throw new NotImplementedException();
+
+            return null;
         }
 
-        public Films BookAScreening()
+        public Films BookAScreening(int screeningId)
         {
-            //THEN choose a screening? No prbs both together
-            //add to user list
-            //would take away one for available seats
-            throw new NotImplementedException();
+            using (var db = new CinemaDB())
+            {
+                var film = db.Films.FirstOrDefault(f => f.ScreeningId == screeningId);
+                if (film != null)
+                {
+                    db.UserFilms.Add(new UserFilms()
+                    {
+                        FilmId = film.Id
+                    });
+                    db.SaveChanges();
+                    return film;
+                }
+            }
+            return null;
         }
 
         //cancelling a booking
-        public UserFilms CancelBooking()
+        public UserFilms CancelBooking(int filmId)
         {
-            throw new NotImplementedException();
+            using (var db = new CinemaDB())
+            {
+                var userFilm = db.UserFilms.FirstOrDefault(f => f.FilmId == filmId);
+
+                if (userFilm != null)
+                {
+                    db.UserFilms.Remove(userFilm);
+                    db.SaveChanges();
+                    return userFilm;
+                }
+            }
+            return null;
+
         }
         
     }
