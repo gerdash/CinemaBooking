@@ -47,10 +47,10 @@ namespace CinemaWebApp.Controllers
             return View(model);
         }
 
-        public IActionResult CancelBookings(int filmId)
+        public IActionResult Cancel(int filmId)
         {
             cinemaManager.CancelBooking(filmId);
-            return RedirectToAction(nameof(Genres));
+            return View();
         }
     }
 }

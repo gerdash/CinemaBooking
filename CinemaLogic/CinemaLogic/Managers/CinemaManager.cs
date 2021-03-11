@@ -71,7 +71,7 @@ namespace CinemaLogic
         {
             using (var db = new CinemaDB())
             {
-                var userFilm = db.UserFilms.FirstOrDefault(f => f.FilmId == filmId);
+                var userFilm = db.UserFilms.FirstOrDefault(u => u.FilmId == filmId);
 
                 if (userFilm != null)
                 {

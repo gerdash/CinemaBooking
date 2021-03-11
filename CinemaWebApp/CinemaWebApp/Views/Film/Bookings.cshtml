@@ -6,15 +6,10 @@
 }
 else
 {
-
-    foreach (var film in Model.UserFilms)
-    {
-        <p>@film.FilmId</p>
-    }
 <div class="container">
     <h1>You've booked this film: @Model.ChosenFilm.Title at this time: @Model.Screening.StartTime</h1>
     <p></p>
-    <button type="button" class="btn btn-secondary btn-sm" asp-controller="Film" asp-action="CancelBookings" asp-route-filmId="@Model.ChosenFilm.Id">Cancel</button>
+    <a class="btn btn-primary" asp-controller="Film" asp-action="Cancel" asp-route-filmId="@Model.ChosenFilm.Id" role="button">Cancel</a>
 </div>
 
 }
