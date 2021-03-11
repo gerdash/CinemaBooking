@@ -22,7 +22,7 @@ namespace CinemaTest
                 Console.WriteLine(f.Title);
             });
 
-
+            
 
         }
     }

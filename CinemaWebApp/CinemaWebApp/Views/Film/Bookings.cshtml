@@ -1,7 +1,7 @@
-﻿
+﻿@model BookingsModel
 
 <div class="container">
-    <h1>You've booked this film!</h1>
+    <h1>You've booked this film: @Model.ChosenFilm.Title at this time: @Model.Screening.StartTime</h1>
     <p>Whatever is relevant to show</p>
     <button type="button" class="btn btn-secondary btn-sm">Cancel</button>
 </div>

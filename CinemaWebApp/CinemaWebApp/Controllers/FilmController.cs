@@ -36,10 +36,14 @@ namespace CinemaWebApp.Controllers
             return View(model);
         }
 
-        public IActionResult Bookings(DateTime booking)
+        public IActionResult Bookings(int booking, string title)
         {
-            cinemaManager.BookAScreening(booking);
-            return View();
+            var model = new BookingsModel
+            {
+                ChosenFilm = cinemaManager.ChooseAFilm(title),
+                Screening = cinemaManager.FindFilmByScreening(booking)
+            };
+            return View(model);
         }
     }
 }

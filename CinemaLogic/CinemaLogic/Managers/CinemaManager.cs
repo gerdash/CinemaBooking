@@ -44,23 +44,19 @@ namespace CinemaLogic
             return null;
         }
 
-        public Films BookAScreening(DateTime ScreeningTime)
+        public Screening FindFilmByScreening(int booking)
         {
             using (var db = new CinemaDB())
             {
-                int screeningId = db.Screening.FirstOrDefault(s => s.StartTime == ScreeningTime).Id;
-                var film = db.Films.FirstOrDefault(f => f.ScreeningId == screeningId);
-                if (film != null)
+                var screening = db.Screening.FirstOrDefault(s => s.Id == booking);
+                if (screening != null)
                 {
-                    db.UserFilms.Add(new UserFilms()
-                    {
-                        FilmId = film.Id
-                    });
-                    db.SaveChanges();
-                    return film;
+                    return screening;
                 }
             }
             return null;
+
+
         }
 
         //cancelling a booking

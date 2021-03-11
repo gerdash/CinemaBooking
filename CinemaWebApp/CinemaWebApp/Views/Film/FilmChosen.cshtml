@@ -14,6 +14,6 @@
             <p class="card-text">@Model.ChosenFilm.Synopsis</p>
             <br />
             <p class="card-text">Choose a screening:</p>
-            <a asp-controller="Film" asp-action="Bookings" class="card-link" asp-route-booking="@Model.Screenings.FirstOrDefault(s => s.Id == Model.ChosenFilm.ScreeningId).StartTime">@Model.Screenings.FirstOrDefault(s => s.Id == Model.ChosenFilm.ScreeningId).StartTime</a>
+            <a asp-controller="Film" asp-action="Bookings" class="card-link" asp-route-booking="@Model.ChosenFilm.ScreeningId" asp-route-title="@Model.ChosenFilm.Title">@Model.Screenings.FirstOrDefault(s => s.Id == Model.ChosenFilm.ScreeningId).StartTime</a>
         </div>
     </div>
