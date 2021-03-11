@@ -41,9 +41,16 @@ namespace CinemaWebApp.Controllers
             var model = new BookingsModel
             {
                 ChosenFilm = cinemaManager.ChooseAFilm(title),
-                Screening = cinemaManager.FindFilmByScreening(booking)
+                Screening = cinemaManager.FindFilmByScreening(booking, title),
+                UserFilms = cinemaManager.GetUserFilm()
             };
             return View(model);
+        }
+
+        public IActionResult CancelBookings(int filmId)
+        {
+            cinemaManager.CancelBooking(filmId);
+            return RedirectToAction(nameof(Genres));
         }
     }
 }
