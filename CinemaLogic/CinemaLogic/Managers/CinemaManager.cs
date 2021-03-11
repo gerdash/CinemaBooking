@@ -44,10 +44,11 @@ namespace CinemaLogic
             return null;
         }
 
-        public Films BookAScreening(int screeningId)
+        public Films BookAScreening(DateTime ScreeningTime)
         {
             using (var db = new CinemaDB())
             {
+                int screeningId = db.Screening.FirstOrDefault(s => s.StartTime == ScreeningTime).Id;
                 var film = db.Films.FirstOrDefault(f => f.ScreeningId == screeningId);
                 if (film != null)
                 {

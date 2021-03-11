@@ -12,37 +12,33 @@ namespace CinemaWebApp.Controllers
     public class FilmController : Controller
     {
         public CategoryManager genreManager = new CategoryManager();
-        CinemaManager cinemaManager = new CinemaManager();
-        public IActionResult Film(string title)
+        public CinemaManager cinemaManager = new CinemaManager();
+        public IActionResult FilmChosen(string title)
         {
-            var model = new ChosenFilmController();
-            model.ChosenFilm = cinemaManager.ChooseAFilm(title);
-            model.Genres = genreManager.GetAllCategories();
-            model.Films = cinemaManager.GetAllFilms();
-            model.Screenings = cinemaManager.GetScreenings();
+            var model = new ChosenFilmModel
+            {
+                ChosenFilm = cinemaManager.ChooseAFilm(title),
+                Genres = genreManager.GetAllCategories(),
+                Films = cinemaManager.GetAllFilms(),
+                Screenings = cinemaManager.GetScreenings()
+            };
             return View(model);
 
         }
-        //public IActionResult ChooseFilm(string title)
-        //{
-        //    cinemaManager.ChooseAFilm(title);
-        //    var model = new FilmsAndGenres();
-        //    model.Genres = genreManager.GetAllCategories();
-        //    model.Films = cinemaManager.GetAllFilms();
-        //    return View(model);
-
-        //}
 
         public IActionResult Genres()
         {
-            var model = new FilmsAndGenres();
-            model.Genres = genreManager.GetAllCategories();
-            model.Films = cinemaManager.GetAllFilms();
+            var model = new FilmsAndGenres
+            {
+                Genres = genreManager.GetAllCategories(),
+                Films = cinemaManager.GetAllFilms()
+            };
             return View(model);
         }
 
-        public IActionResult Bookings()
+        public IActionResult Bookings(DateTime booking)
         {
+            cinemaManager.BookAScreening(booking);
             return View();
         }
     }

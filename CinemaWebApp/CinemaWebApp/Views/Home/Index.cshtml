@@ -5,93 +5,17 @@
         <li class="breadcrumb-item active" aria-current="page">Newest films</li>
     </ol>
 </nav>
-@foreach (var film in Model)
-{
-    <div class="col-md-4 col-sm-12 mb-3">
-        <div class="card">
-            <img src="@film.Image" class="card-img" alt="Lady Macbeth" />
-            <div class="card-body">
-                <a asp-controller="Film" asp-action="Film" class="card-link" asp-route-title="@film.Title">@film.Title</a>
-            </div>
-        </div>
-    </div>
-}
-@*<div class="row">
-    <div class="col-md-4 col-sm-12 mb-3">
-        <div class="card">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em"></text></svg>
-            <div class="card-body">
-                <a asp-controller="Film" asp-action="Article" class="card-link">Film title</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4 col-sm-12 mb-3">
-        <div class="card">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em"></text></svg>
-            <div class="card-body">
-                <a asp-controller="Film" asp-action="Article" class="card-link">Film title</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4 col-sm-12 mb-3">
-        <div class="card">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em"></text></svg>
-            <div class="card-body">
-                <a asp-controller="Film" asp-action="Article" class="card-link">Film title</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4 col-sm-12 mb-3">
-        <div class="card">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em"></text></svg>
-            <div class="card-body">
-                <a asp-controller="Film" asp-action="Article" class="card-link">Film title</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4 col-sm-12 mb-3">
-        <div class="card">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em"></text></svg>
-            <div class="card-body">
-                <a asp-controller="Film" asp-action="Article" class="card-link">Film title</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4 col-sm-12 mb-3">
-        <div class="card">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em"></text></svg>
-            <div class="card-body">
-                <a asp-controller="Film" asp-action="Article" class="card-link">Film title</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-
 <div class="row">
-    <div class="col-md-4 col-sm-12 mb-3">
-        <div class="card">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em"></text></svg>
-            <div class="card-body">
-                <a asp-controller="Film" asp-action="Article" class="card-link">Film title</a>
+    @foreach (var film in Model)
+    {
+        <div class="col-md-4 col-sm-12 mb-3">
+            <div class="card">
+                <img src="@film.Image" class="card-img" alt="" />
+                <div class="card-body">
+                    <a asp-controller="Film" asp-action="FilmChosen" class="card-link" asp-route-title="@film.Title">@film.Title</a>
+                </div>
             </div>
         </div>
+    }
     </div>
-    <div class="col-md-4 col-sm-12 mb-3">
-        <div class="card">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em"></text></svg>
-            <div class="card-body">
-                <a asp-controller="Film" asp-action="Article" class="card-link">Film title</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4 col-sm-12 mb-3">
-        <div class="card">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em"></text></svg>
-            <div class="card-body">
-                <a asp-controller="Film" asp-action="Article" class="card-link">Film title</a>
-            </div>
-        </div>
-    </div>*@
-
-@*</div>*@
+  
