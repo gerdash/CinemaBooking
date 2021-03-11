@@ -1,0 +1,26 @@
+﻿@model FilmsAndGenres
+    
+    <!--add: how to make an active link for genres-->
+    <ul class="nav nav-pills mb-3">
+        @foreach (var category in Model.Genres)
+        {
+            <li class="nav-item">
+                <a class="nav-link" href="#">@category.Name</a>
+            </li>
+        }
+    </ul>
+
+<div class="row">
+    @foreach (var film in Model.Films)
+    {
+            <div class="col-md-4 col-sm-12 mb-3">
+                <div class="card">
+                    <img src="@film.Image" class="card-img" alt="Lady Macbeth" />
+                    <div class="card-body">
+                        <a asp-controller="Film" asp-action="Film" class="card-link">@film.Title</a>
+                    </div>
+                </div>
+            </div>
+    }
+</div>
+    

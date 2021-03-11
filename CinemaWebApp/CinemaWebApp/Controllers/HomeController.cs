@@ -1,4 +1,6 @@
-﻿using CinemaWebApp.Models;
+﻿using CinemaLogic;
+using CinemaLogic.Managers;
+using CinemaWebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -11,9 +13,11 @@ namespace CinemaWebApp.Controllers
 {
     public class HomeController : Controller
     {
+        public CategoryManager genreManager = new CategoryManager();
+        CinemaManager cinemaManager = new CinemaManager();
         public IActionResult Index()
         {
-            return View();
+            return View(cinemaManager.GetAllFilms());
         }
 
     }

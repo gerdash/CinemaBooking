@@ -1,0 +1,19 @@
+﻿@model ChosenFilmController
+
+    <div class="card bg-dark text-white">
+        <img src="@Model.ChosenFilm.Image" class="card-img" alt="...">
+        <div class="card-img-overlay">
+            <p class="card-text">@Model.ChosenFilm.Cast</p>
+            <p class="card-text">@Model.ChosenFilm.DurationInMin min</p>
+        </div>
+    </div>
+    <div class="card" style="width: 100%;">
+        <div class="card-body">
+            <h5 class="card-title">@Model.ChosenFilm.Title</h5>
+            <h6 class="card-subtitle mb-2 text-muted">@Model.Genres.FirstOrDefault(g => g.Id == Model.ChosenFilm.CategoryId).Name</h6>
+            <p class="card-text">@Model.ChosenFilm.Synopsis</p>
+            <br />
+            <p class="card-text">Choose a screening:</p>
+            <a href="#" class="card-link">@Model.Screenings.FirstOrDefault(s => s.Id == Model.ChosenFilm.ScreeningId).StartTime</a>
+        </div>
+    </div>

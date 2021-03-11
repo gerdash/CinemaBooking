@@ -22,6 +22,14 @@ namespace CinemaLogic
             }
         }
 
+        public List<Screening> GetScreenings()
+        {
+            using (var db = new CinemaDB())
+            {
+                return db.Screening.ToList();
+            }
+        }
+
         //book a film for a specific time
         public Films ChooseAFilm(string title)
         {
@@ -33,7 +41,6 @@ namespace CinemaLogic
                     return film;
                 }
             }
-
             return null;
         }
 
