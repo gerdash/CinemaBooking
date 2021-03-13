@@ -1,6 +1,6 @@
-﻿@model BookingsModel
+﻿@model List<CinemaLogic.DB.UserFilms>
 
-@if (Model.UserFilms.Count == 0)
+@if (Model.Count == 0)
 {
     <p>There are no bookings yet!</p>
 }
@@ -13,11 +13,11 @@ else
                 <th>Screening time</th>
                 <th></th>
             </tr>
-            @foreach (var film in Model.UserFilms)
+            @foreach (var film in Model)
             {
                 <tr>
                     <td>@film.FilmTitle</td>
-                    <td>@Model.Screening.StartTime</td>
+                    <td>@film.ScreeningTime</td>
                     <td><a class="btn btn-primary" asp-controller="Booking" asp-action="Cancel" asp-route-filmId="@film.FilmId" role="button">Cancel</a></td>
                 </tr>
             }

@@ -1,4 +1,6 @@
-﻿@model List<CinemaLogic.DB.Films>
+﻿@{
+    ViewData["Title"] = "";
+}
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
@@ -12,10 +14,10 @@
             <div class="card">
                 <img src="@film.Image" class="card-img" alt="" />
                 <div class="card-body">
-                    <a asp-controller="Film" asp-action="FilmChosen" class="card-link" asp-route-title="@film.Title">@film.Title</a>
+                    <a asp-controller="Film" asp-action="FilmChosen" class="card-link" asp-route-id="@film.Id">@film.Title</a>
                 </div>
             </div>
         </div>
     }
-    </div>
-  
+</div>
+

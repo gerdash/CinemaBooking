@@ -12,19 +12,19 @@ namespace CinemaLogic
         {
             using (var db = new CinemaDB())
             {
-                return db.Films.OrderByDescending(f => f.ReleaseDate).ToList();
+                return db.Films.ToList();
             }
         }
-        //getting the film user has chosen
-        public List<UserFilms> GetUserFilm()
+        //gets the newest releases of 9 films
+        public List<Films> GetNewestFilms()
         {
             using (var db = new CinemaDB())
             {
-                return db.UserFilms.ToList();
+                return db.Films.OrderByDescending(f => f.ReleaseDate).Take(9).ToList();
             }
         }
 
-        //method to get all of the records by category
+        //method to get all of the the films in a category
         public List<Films> GetByCategory(int categoryId)
         {
             using (var db = new CinemaDB())
@@ -36,20 +36,12 @@ namespace CinemaLogic
             }
         }
 
-        public List<Screening> GetScreenings()
+        //Choosing a film user has clicked on
+        public Films ChooseAFilm(int filmId)
         {
             using (var db = new CinemaDB())
             {
-                return db.Screening.ToList();
-            }
-        }
-
-        //book a film for a specific time
-        public Films ChooseAFilm(string title)
-        {
-            using (var db = new CinemaDB())
-            {
-                var film = db.Films.FirstOrDefault(f => f.Title.ToLower() == title.ToLower());
+                var film = db.Films.FirstOrDefault(f => f.Id == filmId);
                 if (film != null)
                 {
                     return film;
@@ -58,44 +50,47 @@ namespace CinemaLogic
             return null;
         }
 
-        public Screening FindFilmByScreening(int booking, string title)
+        //Getting a genre by the Id value
+        public Categories GetGenreById(int categoryId)
         {
             using (var db = new CinemaDB())
             {
-                var film = ChooseAFilm(title);
-                var screening = db.Screening.FirstOrDefault(s => s.Id == booking);
-                if (screening != null && film != null)
+                var genre = db.Categories.FirstOrDefault(c => c.Id == categoryId);
+                if (genre != null)
                 {
-                    db.UserFilms.Add(new UserFilms()
+                    return genre;
+                }
+            }
+            return null;
+        }
+        //Getting a screening by the Id value
+        public List<DateTime> GetScreeningTimesById(int screeningId)
+        {
+            using (var db = new CinemaDB())
+            {
+                var screening = db.Screening.FirstOrDefault(s => s.Id == screeningId);
+                List<DateTime> screeningTimes = new List<DateTime>();
+                if (screening != null)
+                {
+                    DateTime screening1 = screening.StartTime1;
+                    screeningTimes.Add(screening1);
+                    DateTime screening2 = screening.StartTime2 ?? default;
+                    DateTime screening3 = screening.StartTime3 ?? default;
+
+                    if (screening2 != default)
                     {
-                        FilmId = film.Id,
-                        FilmTitle = film.Title,
-                        ScreeningId = screening.Id
-                    });
-                    db.SaveChanges();
-                    return screening;
+                        screeningTimes.Add(screening2);
+                    }
+                    if (screening3 != default)
+                    {
+                        screeningTimes.Add(screening3);
+                    }
+                    return screeningTimes;
                 }
+                return null;
             }
-            return null;
         }
-
-        //cancelling a booking
-        public UserFilms CancelBooking(int filmId)
-        {
-            using (var db = new CinemaDB())
-            {
-                var userFilm = db.UserFilms.FirstOrDefault(u => u.FilmId == filmId);
-
-                if (userFilm != null)
-                {
-                    db.UserFilms.Remove(userFilm);
-                    db.SaveChanges();
-                    return userFilm;
-                }
-            }
-            return null;
-
-        }
-        
     }
 }
+
+    

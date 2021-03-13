@@ -7,7 +7,7 @@ namespace CinemaLogic.DB
     {
         public int Id { get; set; }
         public int FilmId { get; set; }
-        public int ScreeningId { get; set; }
         public string FilmTitle { get; set; }
+        public string ScreeningTime { get; set; }
     }
 }

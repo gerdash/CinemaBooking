@@ -1,19 +1,24 @@
 ﻿@model ChosenFilmModel
 
-    <div class="card bg-dark text-white">
-        <img src="@Model.ChosenFilm.Image" class="card-img" alt="...">
-        <div class="card-img-overlay">
-            <p class="card-text">@Model.ChosenFilm.Cast</p>
-            <p class="card-text">@Model.ChosenFilm.DurationInMin min</p>
-        </div>
-    </div>
-    <div class="card" style="width: 100%;">
+    <div class="card mb-3">
+    <img src="@Model.ChosenFilm.Image" class="card-img-top" alt="@Model.ChosenFilm.Title">
+    <div class="card-body">
         <div class="card-body">
             <h5 class="card-title">@Model.ChosenFilm.Title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">@Model.Genres.FirstOrDefault(g => g.Id == Model.ChosenFilm.CategoryId).Name</h6>
+            <h6 class="card-subtitle mb-2 text-muted">@Model.ChosenFilmGenre.Name</h6>
+            <p class="card-text">Director: @Model.ChosenFilm.Director</p>
+            <p class="card-text">Cast: @Model.ChosenFilm.Cast</p>
             <p class="card-text">@Model.ChosenFilm.Synopsis</p>
+            <p class="card-text">@Model.ChosenFilm.DurationInMin min</p>
+            <p class="card-text">Released: @Model.ChosenFilm.ReleaseDate.ToShortDateString()</p>
+            <br />
             <br />
             <p class="card-text">Choose a screening:</p>
-            <a asp-controller="Booking" asp-action="Bookings" class="card-link" asp-route-booking="@Model.ChosenFilm.ScreeningId" asp-route-title="@Model.ChosenFilm.Title">@Model.Screenings.FirstOrDefault(s => s.Id == Model.ChosenFilm.ScreeningId).StartTime</a>
+
+            @foreach (var screeningTime in Model.ScreeningTimes)
+            {
+                <a asp-route-controller="Booking" asp-route-action="Bookings" asp-route-filmId="@Model.ChosenFilm.Id" asp-route-time="@screeningTime.ToString()"> @screeningTime</a>
+            }
         </div>
+    </div>
     </div>

@@ -6,6 +6,8 @@ namespace CinemaLogic.DB
     public partial class Screening
     {
         public int Id { get; set; }
-        public DateTime StartTime { get; set; }
+        public DateTime StartTime1 { get; set; }
+        public DateTime? StartTime2 { get; set; }
+        public DateTime? StartTime3 { get; set; }
     }
 }

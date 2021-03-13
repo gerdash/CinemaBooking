@@ -13,17 +13,16 @@ namespace CinemaWebApp.Controllers
     {
         public CategoryManager genreManager = new CategoryManager();
         public CinemaManager cinemaManager = new CinemaManager();
-        public IActionResult FilmChosen(string title)
+        public IActionResult FilmChosen(int? id)
         {
-            var model = new ChosenFilmModel
+            ChosenFilmModel model = new ChosenFilmModel();
+            if (id.HasValue)
             {
-                ChosenFilm = cinemaManager.ChooseAFilm(title),
-                Genres = genreManager.GetAllCategories(),
-                Films = cinemaManager.GetAllFilms(),
-                Screenings = cinemaManager.GetScreenings()
-            };
+                model.ChosenFilm = cinemaManager.ChooseAFilm(id.Value);
+                model.ChosenFilmGenre = cinemaManager.GetGenreById(model.ChosenFilm.CategoryId);
+                model.ScreeningTimes = cinemaManager.GetScreeningTimesById(model.ChosenFilm.ScreeningId);
+            }
             return View(model);
-
         }
 
         public IActionResult Genres(int? id)
@@ -37,22 +36,6 @@ namespace CinemaWebApp.Controllers
             }
             
             return View(model);
-        }
-
-        public IActionResult Bookings(int booking, string title)
-        {
-            var model = new BookingsModel
-            {
-                Screening = cinemaManager.FindFilmByScreening(booking, title),
-                UserFilms = cinemaManager.GetUserFilm()
-            };
-            return View(model);
-        }
-
-        public IActionResult Cancel(int filmId)
-        {
-            cinemaManager.CancelBooking(filmId);
-            return View();
         }
     }
 }

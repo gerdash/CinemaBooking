@@ -13,11 +13,10 @@ namespace CinemaWebApp.Controllers
 {
     public class HomeController : Controller
     {
-        public CategoryManager genreManager = new CategoryManager();
         CinemaManager cinemaManager = new CinemaManager();
         public IActionResult Index()
         {
-            return View(cinemaManager.GetAllFilms());
+            return View(cinemaManager.GetNewestFilms());
         }
 
     }

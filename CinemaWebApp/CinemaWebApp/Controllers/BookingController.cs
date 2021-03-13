@@ -13,21 +13,16 @@ namespace CinemaWebApp.Controllers
     {
         CinemaManager cinemaManager = new CinemaManager();
         BookingManager bookingManager = new BookingManager();
-        public IActionResult Bookings(int booking, string title)
+        public IActionResult Bookings(int filmId,string time)
         {
-            var model = new BookingsModel
-            {
-                //fix the method so the screening time would be saved in userfilms!!!
-                Screening = cinemaManager.FindFilmByScreening(booking, title),
-                UserFilms = cinemaManager.GetUserFilm()
-            };
-            return View(model);
+            bookingManager.BookFilm(filmId, time);
+            return View(bookingManager.GetUserFilm());
         }
 
         public IActionResult Cancel(int filmId)
         {
             bookingManager.CancelBooking(filmId);
-            return View();
+            return RedirectToAction(nameof(Bookings));
         }
     }
 }

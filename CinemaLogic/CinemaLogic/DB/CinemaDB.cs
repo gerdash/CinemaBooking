@@ -73,7 +73,11 @@ namespace CinemaLogic.DB
 
                 entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
-                entity.Property(e => e.StartTime).HasColumnType("datetime");
+                entity.Property(e => e.StartTime1).HasColumnType("datetime");
+
+                entity.Property(e => e.StartTime2).HasColumnType("datetime");
+
+                entity.Property(e => e.StartTime3).HasColumnType("datetime");
             });
 
             modelBuilder.Entity<UserFilms>(entity =>
@@ -82,10 +86,11 @@ namespace CinemaLogic.DB
 
                 entity.Property(e => e.FilmTitle)
                     .IsRequired()
-                    .HasColumnName("Film Title")
                     .HasMaxLength(50);
 
-                entity.Property(e => e.ScreeningId).HasColumnName("Screening_id");
+                entity.Property(e => e.ScreeningTime)
+                    .IsRequired()
+                    .HasMaxLength(50);
             });
 
             OnModelCreatingPartial(modelBuilder);

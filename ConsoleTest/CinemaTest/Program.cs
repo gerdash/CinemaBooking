@@ -17,7 +17,7 @@ namespace CinemaTest
             });
 
             Console.WriteLine("Films: ");
-            films.GetAllFilms().ForEach(f =>
+            films.GetNewestFilms().ForEach(f =>
             {
                 Console.WriteLine(f.Title);
             });
