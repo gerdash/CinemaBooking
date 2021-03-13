@@ -7,6 +7,7 @@ namespace CinemaLogic
 {
     public class CinemaManager
     {
+        //getting all of the films in the cinema database
         public List<Films> GetAllFilms()
         {
             using (var db = new CinemaDB())
@@ -14,11 +15,24 @@ namespace CinemaLogic
                 return db.Films.OrderByDescending(f => f.ReleaseDate).ToList();
             }
         }
+        //getting the film user has chosen
         public List<UserFilms> GetUserFilm()
         {
             using (var db = new CinemaDB())
             {
                 return db.UserFilms.ToList();
+            }
+        }
+
+        //method to get all of the records by category
+        public List<Films> GetByCategory(int categoryId)
+        {
+            using (var db = new CinemaDB())
+            {
+                return db.Films
+                    .Where(f => f.CategoryId == categoryId)
+                    .OrderByDescending(f => f.ReleaseDate)
+                    .ToList();
             }
         }
 
@@ -55,6 +69,7 @@ namespace CinemaLogic
                     db.UserFilms.Add(new UserFilms()
                     {
                         FilmId = film.Id,
+                        FilmTitle = film.Title,
                         ScreeningId = screening.Id
                     });
                     db.SaveChanges();
@@ -62,8 +77,6 @@ namespace CinemaLogic
                 }
             }
             return null;
-
-
         }
 
         //cancelling a booking

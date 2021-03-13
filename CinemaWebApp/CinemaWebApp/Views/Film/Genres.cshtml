@@ -1,26 +1,47 @@
-﻿@model FilmsAndGenres
-    
-    <!--add: how to make an active link for genres-->
+﻿@model GenresModel
+
     <ul class="nav nav-pills mb-3">
         @foreach (var category in Model.Genres)
         {
-            <li class="nav-item">
-                <a class="nav-link" href="#">@category.Name</a>
+            <li class="nav-item @(ViewContext.RouteData.Values["action"].ToString() == "Genres" ? "active" : "")">
+                <a class="nav-link" asp-controller="Film" asp-action="Genres" asp-route-id="@category.Id">@category.Name</a>
             </li>
         }
     </ul>
 
+@if (Model.ActiveCat != null)
+{
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item-active" aria-current="page">@Model.ActiveCat.Name</li>
+    </ol>
+</nav>
+}
+
+<!--Figure out how to show a message-->
+@if (Model.Films != null)
+{
 <div class="row">
     @foreach (var film in Model.Films)
     {
+        @if (Model.Films.Count == 0)
+        {
+            <h3>There are no films in @Model.ActiveCat.Name</h3>
+        }
+        else
+        {
+
             <div class="col-md-4 col-sm-12 mb-3">
                 <div class="card">
-                    <img src="@film.Image" class="card-img" alt="Lady Macbeth" />
+                    <img src="@film.Image" class="card-img" alt="@film.Title" />
                     <div class="card-body">
-                        <a asp-controller="Film" asp-action="FilmChosen" class="card-link" asp-route-title="@film.Title">@film.Title</a>
+                        <a class="card-link" asp-controller="Film" asp-action="FilmChosen" asp-route-id="@film.Id">@film.Title</a>
                     </div>
                 </div>
             </div>
+        }
     }
 </div>
-    
+}
+
+

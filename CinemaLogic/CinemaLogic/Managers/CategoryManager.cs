@@ -16,5 +16,13 @@ namespace CinemaLogic.Managers
                 return db.Categories.OrderBy(n => n.Name).ToList();
             }
         }
+
+        public Categories GetCategory(int id)
+        {
+            using (var db = new CinemaDB())
+            {
+                return db.Categories.FirstOrDefault(c => c.Id == id);
+            }
+        }
     }
 }

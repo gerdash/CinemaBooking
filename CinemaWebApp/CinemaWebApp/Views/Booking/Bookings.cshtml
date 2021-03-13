@@ -1,0 +1,26 @@
+﻿@model BookingsModel
+
+@if (Model.UserFilms.Count == 0)
+{
+    <p>There are no bookings yet!</p>
+}
+else
+{
+    <div class="container">
+        <table class="table table-borderless">
+            <tr>
+                <th>Title</th>
+                <th>Screening time</th>
+                <th></th>
+            </tr>
+            @foreach (var film in Model.UserFilms)
+            {
+                <tr>
+                    <td>@film.FilmTitle</td>
+                    <td>@Model.Screening.StartTime</td>
+                    <td><a class="btn btn-primary" asp-controller="Booking" asp-action="Cancel" asp-route-filmId="@film.FilmId" role="button">Cancel</a></td>
+                </tr>
+            }
+        </table>
+    </div>
+    }

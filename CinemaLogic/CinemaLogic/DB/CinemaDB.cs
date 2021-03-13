@@ -80,6 +80,11 @@ namespace CinemaLogic.DB
             {
                 entity.Property(e => e.FilmId).HasColumnName("Film_id");
 
+                entity.Property(e => e.FilmTitle)
+                    .IsRequired()
+                    .HasColumnName("Film Title")
+                    .HasMaxLength(50);
+
                 entity.Property(e => e.ScreeningId).HasColumnName("Screening_id");
             });
 

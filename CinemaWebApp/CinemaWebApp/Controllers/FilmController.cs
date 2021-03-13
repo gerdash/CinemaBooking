@@ -26,13 +26,16 @@ namespace CinemaWebApp.Controllers
 
         }
 
-        public IActionResult Genres()
+        public IActionResult Genres(int? id)
         {
-            var model = new FilmsAndGenres
+            GenresModel model = new GenresModel();
+            model.Genres = genreManager.GetAllCategories();
+            if (id.HasValue)
             {
-                Genres = genreManager.GetAllCategories(),
-                Films = cinemaManager.GetAllFilms()
-            };
+                model.Films = cinemaManager.GetByCategory(id.Value);
+                model.ActiveCat = genreManager.GetCategory(id.Value);
+            }
+            
             return View(model);
         }
 
@@ -40,7 +43,6 @@ namespace CinemaWebApp.Controllers
         {
             var model = new BookingsModel
             {
-                ChosenFilm = cinemaManager.ChooseAFilm(title),
                 Screening = cinemaManager.FindFilmByScreening(booking, title),
                 UserFilms = cinemaManager.GetUserFilm()
             };

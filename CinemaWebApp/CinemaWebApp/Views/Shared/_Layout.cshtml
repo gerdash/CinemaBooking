@@ -17,14 +17,14 @@
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto">
-                            <li class="nav-item active">
+                            <li class="nav-item @(ViewContext.RouteData.Values["action"].ToString() == "Index" ? "active" : "")">
                                 <a class="nav-link" asp-controller="Home" asp-action="Index">NEW</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item @(ViewContext.RouteData.Values["action"].ToString() == "Genres" ? "active" : "")">
                                 <a class="nav-link" asp-controller="Film" asp-action="Genres">GENRES</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Film" asp-action="Bookings">My Bookings</a>
+                            <li class="nav-item @(ViewContext.RouteData.Values["action"].ToString() == "Bookings" ? "active" : "")">
+                                <a class="nav-link" asp-controller="Booking" asp-action="Bookings">My Bookings</a>
                             </li>
                         </ul>
                     </div>
