@@ -13,16 +13,14 @@ namespace CinemaWebApp.Controllers
     {
         CinemaManager cinemaManager = new CinemaManager();
         BookingManager bookingManager = new BookingManager();
-        public IActionResult Bookings(int filmId,string time)
+        public IActionResult Bookings(int filmId)
         {
-            bookingManager.BookFilm(filmId, time);
             return View(bookingManager.GetUserFilm());
         }
-
         public IActionResult Cancel(int filmId)
         {
             bookingManager.CancelBooking(filmId);
-            return RedirectToAction(nameof(Bookings));
+            return RedirectToAction();
         }
     }
 }

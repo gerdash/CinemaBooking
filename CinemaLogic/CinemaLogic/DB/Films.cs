@@ -15,5 +15,6 @@ namespace CinemaLogic.DB
         public string Cast { get; set; }
         public int DurationInMin { get; set; }
         public int ScreeningId { get; set; }
+        public double? Price { get; set; }
     }
 }

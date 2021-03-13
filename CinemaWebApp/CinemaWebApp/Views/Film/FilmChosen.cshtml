@@ -17,8 +17,10 @@
 
             @foreach (var screeningTime in Model.ScreeningTimes)
             {
-                <a asp-route-controller="Booking" asp-route-action="Bookings" asp-route-filmId="@Model.ChosenFilm.Id" asp-route-time="@screeningTime.ToString()"> @screeningTime</a>
+                <a asp-route-controller="Film" asp-route-action="Bookings" asp-route-filmId="@Model.ChosenFilm.Id" asp-route-time="@screeningTime.ToString()"> @screeningTime</a>
             }
+
+            <p class="card-text">Choose how many seats to book:</p>
         </div>
     </div>
     </div>

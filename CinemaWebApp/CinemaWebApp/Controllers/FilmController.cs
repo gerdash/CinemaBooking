@@ -13,6 +13,7 @@ namespace CinemaWebApp.Controllers
     {
         public CategoryManager genreManager = new CategoryManager();
         public CinemaManager cinemaManager = new CinemaManager();
+        public BookingManager bookingManager = new BookingManager();
         public IActionResult FilmChosen(int? id)
         {
             ChosenFilmModel model = new ChosenFilmModel();
@@ -37,5 +38,11 @@ namespace CinemaWebApp.Controllers
             
             return View(model);
         }
+        public IActionResult Bookings(int filmId, string time)
+        {
+            bookingManager.BookFilm(filmId, time);
+            return View(RedirectToAction(nameof(FilmChosen)));
+        }
+
     }
 }
